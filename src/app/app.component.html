@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span>Jerivan Logistics</span>
+  <img src="../assets/images/logo2.png" alt="logo" width="50" height="50">
+  <div style="position: absolute; right: 25px;">
+      <span [style.cursor]="'pointer'" routerLink="login">Login</span>
+      <!-- <span [style.cursor]="'pointer'" routerLink="home"  style="margin-left: 25px">Home</span>
+      <span [style.cursor]="'pointer'" routerLink="employeeList" style="margin-left: 25px">Employees</span>
+      <span [style.cursor]="'pointer'" (click)="logoutUser()" style="margin-left: 25px">Logout</span> -->
+  </div > 
+</mat-toolbar>
+
+<router-outlet></router-outlet>

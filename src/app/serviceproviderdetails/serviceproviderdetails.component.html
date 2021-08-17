@@ -1,0 +1,61 @@
+<h1>Name: {{serviceProvider.name}}</h1>
+<h5>Country: {{serviceProvider.country}}</h5>
+<h5>State: {{serviceProvider.state}}</h5>
+<h5>City: {{serviceProvider.city}}</h5>
+
+<h2>Notes</h2>
+<div>
+    <button mat-raised-button color="primary" (click)="addNote()">Add Note</button>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let note of notes; let i = index;">
+                <td>{{note.title}}</td>
+                <td>{{note.text}}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="editNote(note)">Edit</button>
+                    <button mat-raised-button color="accent" (click)="deleteNote(note)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<h2>Contacts</h2>
+<div>
+    <button mat-raised-button color="primary" (click)="addContact()">Add Contact</button>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Office Phone</th>
+                <th>Email</th>
+                <th>Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let contact of contacts; let i = index;">
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td>{{contact.phone}}</td>
+                <td>{{contact.officePhone}}</td>
+                <td>{{contact.email}}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="editContact(contact)">Edit</button>
+                    <button mat-raised-button color="accent" (click)="deleteContact(contact)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

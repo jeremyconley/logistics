@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12 col-xl-9 card flex-row mx-auto px-0">
+            <div class="img-left d-none d-md-flex"></div>
+
+            <div class="card-body">
+                <h4 class="title text-center mt-4">
+                    Login
+                </h4>
+                <div>
+                    <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm)">
+                        <div class="form-input">
+                            <span><i class="fa fa-user" style="color: rgb(109, 35, 179);"></i></span>
+                            <input type="text" name="username" ngModel class="form-control" placeholder="User name" tabindex="10" required />
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-key" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="password" name="password" ngModel class="form-control" placeholder="Password" tabindex="10" required />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <button mat-raised-button color="primary" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mb-3">
+                    <button mat-raised-button color="accent" (click)="forgotPassword()">Forgot Password</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

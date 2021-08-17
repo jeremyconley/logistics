@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <br>
+    <h2>Add Service Provider</h2>
+    <form #addSPForm = "ngForm" (ngSubmit)="onSubmit(addSPForm)" novalidate>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" #name = "ngModel" class="form-control" required name="name" [(ngModel)] = "spModel.name"
+            [class.is-invalid] = "name.invalid && name.touched">
+            <div *ngIf="name.touched && name.errors">
+                <div class="alert alert-danger" *ngIf="name.errors.required">Name is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Address 1</label>
+            <input type="text" #address1 = "ngModel" class="form-control" required name="address1" [(ngModel)] = "spModel.address1"
+            [class.is-invalid] = "address1.invalid && address1.touched">
+            <div *ngIf="address1.touched && address1.errors">
+                <div class="alert alert-danger" *ngIf="address1.errors.required">Address 1 is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Address 2</label>
+            <input type="text" #address2 = "ngModel" class="form-control" name="address2" [(ngModel)] = "spModel.address2">
+        </div>
+
+        <div class="form-group">
+            <label>Country</label>
+            <input type="text" #country = "ngModel" class="form-control" required name="country" [(ngModel)] = "spModel.country"
+            [class.is-invalid] = "country.invalid && country.touched">
+            <div *ngIf="country.touched && country.errors">
+                <div class="alert alert-danger" *ngIf="country.errors.required">Country is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>State</label>
+            <input type="text" #state = "ngModel" class="form-control" required name="state" [(ngModel)] = "spModel.state"
+            [class.is-invalid] = "state.invalid && state.touched">
+            <div *ngIf="state.touched && state.errors">
+                <div class="alert alert-danger" *ngIf="state.errors.required">State is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" #city = "ngModel" class="form-control" required name="city" [(ngModel)] = "spModel.city"
+            [class.is-invalid] = "city.invalid && city.touched">
+            <div *ngIf="city.touched && city.errors">
+                <div class="alert alert-danger" *ngIf="city.errors.required">City is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Territory</label>
+            <input type="text" #territory = "ngModel" class="form-control" name="territory" [(ngModel)] = "spModel.territory">
+        </div>
+
+        <div class="form-group">
+            <label>Zip</label>
+            <input type="number" #zip = "ngModel" class="form-control" required name="zip" [(ngModel)] = "spModel.zip"
+            [class.is-invalid] = "zip.invalid && zip.touched">
+            <div *ngIf="zip.touched && zip.errors">
+                <div class="alert alert-danger" *ngIf="zip.errors.required">Zip is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Fax</label>
+            <input type="number" #fax = "ngModel" class="form-control" name="fax" [(ngModel)] = "spModel.fax">
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="number" #phone = "ngModel" class="form-control" required name="phone" [(ngModel)] = "spModel.phone"
+            [class.is-invalid] = "phone.invalid && phone.touched">
+            <div *ngIf="phone.touched && phone.errors">
+                <div class="alert alert-danger" *ngIf="phone.errors.required">Phone is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" #email = "ngModel" class="form-control" required name="email" [(ngModel)] = "spModel.email"
+            [class.is-invalid] = "email.invalid && email.touched">
+            <div *ngIf="email.touched && email.errors">
+                <div class="alert alert-danger" *ngIf="email.errors.required">Email is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Timezone</label>
+            <input type="text" #timezone = "ngModel" class="form-control" required name="timezone" [(ngModel)] = "spModel.timezone"
+            [class.is-invalid] = "timezone.invalid && timezone.touched">
+            <div *ngIf="timezone.touched && timezone.errors">
+                <div class="alert alert-danger" *ngIf="timezone.errors.required">Timezone is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Weekday Hours</label>
+            <input type="time" #weekdayHours = "ngModel" class="form-control" required name="weekdayHours" [(ngModel)] = "spModel.weekdayHours"
+            [class.is-invalid] = "weekdayHours.invalid && weekdayHours.touched">
+            <div *ngIf="weekdayHours.touched && weekdayHours.errors">
+                <div class="alert alert-danger" *ngIf="weekdayHours.errors.required">Weekday Hours is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Weekend Hours</label>
+            <input type="time" #weekendHours = "ngModel" class="form-control" required name="weekendHours" [(ngModel)] = "spModel.weekendHours"
+            [class.is-invalid] = "weekendHours.invalid && weekendHours.touched">
+            <div *ngIf="weekendHours.touched && weekendHours.errors">
+                <div class="alert alert-danger" *ngIf="weekendHours.errors.required">Weekend Hours is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sunday Hours</label>
+            <input type="time" #sundayHours = "ngModel" class="form-control" required name="sundayHours" [(ngModel)] = "spModel.sundayHours"
+            [class.is-invalid] = "sundayHours.invalid && sundayHours.touched">
+            <div *ngIf="sundayHours.touched && sundayHours.errors">
+                <div class="alert alert-danger" *ngIf="sundayHours.errors.required">Sunday Hours is required</div>
+            </div>
+        </div>
+        
+        <button mat-raised-button color="primary" type="submit" [disabled]="addSPForm.form.invalid">Submit Form</button>
+  
+    </form>    
+</div>
