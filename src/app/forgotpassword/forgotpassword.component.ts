@@ -22,7 +22,8 @@ export class ForgotpasswordComponent implements OnInit {
   onSubmit(contactForm: NgForm) {
     if (contactForm.valid) {
       this.email.to = contactForm.value.email;
-      this.email.subject = "Your current password is: " + this.authService.password;
+      this.email.subject = "Forgot Password"
+      this.email.body = "Your current password is: " + this.authService.password;
       this.emailService.sendEmail(this.email).subscribe(
         (data) => { alert("Email sent successfully"); }
       )
