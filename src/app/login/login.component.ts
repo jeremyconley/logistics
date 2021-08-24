@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   forgotPassword(){
-    console.log(`Hellloooo`);
     const dialogRef = this.dialog.open(ForgotpasswordComponent);
 
     dialogRef.afterClosed().subscribe(result => {

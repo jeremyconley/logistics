@@ -1,32 +1,47 @@
-<div class="sub-header">
-    <h3 style="margin-left: 15px; padding-top: 5px; padding-bottom: 5px;">Service Providers</h3>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12 col-xl-9 card flex-row mx-auto px-0">
+
+            <div class="card-body">
+                <h4 class="title text-center mt-4">
+                    Service Providers
+                </h4>
+
+                <button style="margin-left: 15px;" mat-raised-button color="primary" (click)="addServiceProvider()">Add Service Provider</button>
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let sp of spList; let i = index;">
+                        <td>{{sp.ServiceId}}</td>
+                        <td>{{sp.ServiceName}}</td>
+                        <td>{{sp.Address1}}</td>
+                        <td>{{sp.Country}}</td>
+                        <td>{{sp.State}}</td>
+                        <td>{{sp.City}}</td>
+                        <td><button mat-raised-button color="accent" (click)="onSelect(sp.ServiceId)">Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <button style="margin-left: 15px;" mat-raised-button color="primary" (click)="addServiceProvider()">Add Service Provider</button>
-    <table class="table table-bordered mt-4">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Country</th>
-                <th>State</th>
-                <th>City</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor = "let sp of spList; let i = index;">
-                <td>{{sp.id}}</td>
-                <td>{{sp.name}}</td>
-                <td>{{sp.address1}}</td>
-                <td>{{sp.country}}</td>
-                <td>{{sp.state}}</td>
-                <td>{{sp.city}}</td>
-                <td><button mat-raised-button color="accent" (click)="onSelect(sp.id)">Details</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+
+<mat-toolbar class="footer" color="primary" style="position: absolute; bottom: 0;">
+    <div style="position: absolute; right: 25px;" class="changePass">
+      <span [style.cursor]="'pointer'" (click) = "changePassword()" style="color:#FBD74A">Change Password</span>
+    </div> 
+  </mat-toolbar>
 
 

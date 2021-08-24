@@ -1,39 +1,42 @@
 export class ServiceProvider {
-    id: string = "";
-    name: string = "";
-    address1: string = "";
-    address2: string = "";
-    country: string = "";
-    state: string = "";
-    city: string = "";
-    territory: string = "";
-    zip: number = 0;
-    fax: number = 0;
-    phone: number = 0;
-    email: string = "";
-    timezone: string = "";
-    weekdayHours: string = "";
-    weekendHours: string = "";
-    sundayHours: string = "";
-    serviceId: number = 0;
-    spType: string = "";
+    ServiceId: number = 0;
+    ServiceName: string = "";
+    Address1: string = "";
+    Address2: string = "";
+    Country: string = "";
+    City: string = "";
+    Territory: string = "";
+    Zip: number | undefined ;
+    Fax: number  | undefined;
+    Phone: number  | undefined;
+    Email: string = "";
+    TimeZone: string = "";
+    WeekdayHoursStart: string = "";
+    WeekdayHoursEnd: string = "";
+    WeekendHoursStart: string = "";
+    WeekendHoursEnd: string = "";
+    SundayHoursStart: string = "";
+    SundayHoursEnd: string = "";
+    State: string = "";
 }
 
 /*
-ServiceId INT IDENTITY(1,1),
-    ServiceName NVARCHAR(20) NOT NULL UNIQUE,
-    Address1 NVARCHAR(30) NOT NULL UNIQUE,
-    Address2 NVARCHAR(30),
-    Country NVARCHAR(30) NOT NULL,
-    City NVARCHAR(30) NOT NULL,
-    Territory NVARCHAR(30),
-    Zip INT,
-    Fax INT,
-    Phone INT NOT NULL UNIQUE,
-    Email NVARCHAR(30) NOT NULL UNIQUE,,
-    TimeZone NVARCHAR(10) NOT NULL UNIQUE,
-    WeekDayHours NVARCAHR(20) NOT NULL,
-    WeekendDayHours NVARCAHR(20) NOT NULL,
-    SundayHours NVARCAHR(20) NOT NULL,
-    PRIMARY KEY(ServiceId)
+"ServiceName": "New Service 5",
+    "Address1": "address 5",
+    "Address2": "address 5",
+    "Country": "s",
+    "City": "s",
+    "Territory": "s",
+    "Zip": 4,
+    "Fax": 4,
+    "Phone": 44554444,
+    "Email": "abcccvffff@email.com",
+    "TimeZone": "a",
+    "WeekdayHoursStart": "1",
+    "WeekdayHoursEnd": "1",
+    "WeekendHoursStart": "1",
+    "WeekendHoursEnd": "1",
+    "SundayHoursStart": "1",
+    "SundayHoursEnd": "1",
+    "State": "h"
 */

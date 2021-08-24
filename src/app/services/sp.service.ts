@@ -1,4 +1,7 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ServiceProvider } from '../models/serviceprovider';
 
 @Injectable({
@@ -6,20 +9,35 @@ import { ServiceProvider } from '../models/serviceprovider';
 })
 export class SpService {
 
-  spList = new Array();
+  private _url: string = "https://logisticsapi20210819194526.azurewebsites.net/api/SERVICE_PROVIDERS";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getServiceProviders(){
-    return this.spList;
+  getServiceProviders(): Observable<ServiceProvider[]> {
+    return this.http.get<ServiceProvider[]>(this._url)
+    .pipe(catchError(this.errorHandler));
+  }
+  getServiceProviderById(id: number): Observable<ServiceProvider[]> {
+    return this.http.get<ServiceProvider[]>(this._url + '/' + id)
+    .pipe(catchError(this.errorHandler));
   }
 
-  getServiceProvider(id: number) {
-    return this.spList.find(x => x.id == id);
+  postServiceProvider(spData: any): Observable<ServiceProvider[]> {
+    return this.http.post<ServiceProvider[]>(this._url, spData)
+    .pipe(catchError(this.errorHandler));
   }
 
-  addServiceProvider(spModel: any) {
-    this.spList.push(spModel);
+  updateServiceProvider(id: number, spData: any): Observable<ServiceProvider[]> {
+    return this.http.put<ServiceProvider[]>(this._url + '/' + id, spData)
+    .pipe(catchError(this.errorHandler));
+  }
+
+  deleteServiceProvider(id: number): Observable<ServiceProvider[]> {
+    return this.http.delete<ServiceProvider[]>(this._url + '/' + id);
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error.message || "Server Error");
   }
 
 

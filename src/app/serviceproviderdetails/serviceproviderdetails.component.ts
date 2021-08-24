@@ -12,8 +12,9 @@ import { SpService } from '../services/sp.service';
 export class ServiceproviderdetailsComponent implements OnInit {
 
   public serviceProvider: any;
-  public notes = Array();
-  public contacts = Array();
+  public notes: any;
+  public contacts: any;
+  public services: any;
   public errorMsg: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private spService: SpService, private noteService: NotesService, private contactService: ContactService)
@@ -28,72 +29,105 @@ export class ServiceproviderdetailsComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      let id = params.get('id');
+      if (id != null) {
+        this.getDetails(id);
+      }
+    });
+  }
+
+
   getDetails(id: any){
-    this.serviceProvider = this.spService.getServiceProvider(id);
-    this.notes = new Array();
-    this.contacts = new Array();
-    //Retrieve our notes
-    var i;
-    let allNotes = this.noteService.getNotes();
-    for (i = 0; i < allNotes.length; i++) {
-      if (allNotes[i].sid == id) {
-        this.notes.push(allNotes[i]);
-      }
+    //Get service details
+    this.spService.getServiceProviderById(id).subscribe(
+      (data) => {
+        this.serviceProvider = data;
+      },
+      (error) => {
+        this.errorMsg = error;
+      },
+      () => console.log("Complete")
+    )
+
+    //Retrieve notes
+    this.noteService.getNotes(id).subscribe(
+      (data) => {
+        this.notes = data;
+      },
+      (error) => {
+        this.errorMsg = error;
+      },
+      () => console.log("Complete")
+    )
+
+    //Retrieve contacts
+    this.contactService.getContacts(id).subscribe(
+      (data) => {
+        this.contacts = data;
+      },
+      (error) => {
+        this.errorMsg = error;
+      },
+      () => console.log("Complete")
+    )
+  
+  }
+
+  editService(){
+    this.router.navigate(['editService', this.serviceProvider.ServiceId]);
+  }
+
+  deleteService(){
+    if(confirm("Are you sure to delete " + this.serviceProvider.ServiceName + "?")) {
+      this.spService.deleteServiceProvider(this.serviceProvider.ServiceId).subscribe(() => {
+        this.spService.getServiceProviders().subscribe(
+          (data) => this.services = data,
+          (error) => this.errorMsg = error
+        )
+      })
     }
-    //Retrieve our contacts
-    var j;
-    let allContacts = this.contactService.getContacts();
-    for (j = 0; j < allContacts.length; j++) {
-      if (allContacts[j].sid == id) {
-        this.contacts.push(allContacts[j]);
-      }
-    }
+
+    this.router.navigate(["home"]);
   }
 
   addNote() {
-    this.router.navigate(['addNote', this.serviceProvider.id]);
+    this.router.navigate(['addNote', this.serviceProvider.ServiceId]);
   }
 
   editNote(note: any) {
-    this.router.navigate(['/editnote', note.id]);
+    this.router.navigate(['/editnote', note.NoteId]);
   }
 
   deleteNote(note: any) {
-    this.noteService.deleteNote(note.id)
-    // this.noteService.deleteNote(note.id).subscribe(() => {
-    //   this.noteService.getNotes().subscribe(
-    //     (data) => this.notes = data,
-    //     (error) => this.errorMsg = error
-    //   )
-    // })
+    if(confirm("Are you sure to delete " + note.Title + "?")) {
+      this.noteService.deleteNote(note.NoteId).subscribe(() => {
+        this.noteService.getNotes(this.serviceProvider.ServiceId).subscribe(
+          (data) => this.notes = data,
+          (error) => this.errorMsg = error
+        )
+      })
+    }
+  }
+
+  addContact() {
+    this.router.navigate(['addContact', this.serviceProvider.ServiceId]);
   }
 
   editContact(contact: any) {
-
+    this.router.navigate(['editContact', contact.PersonID]);
   }
 
   deleteContact(contact: any) {
     
+    if(confirm("Are you sure to delete " + contact.FirstName + "?")) {
+      this.contactService.deleteContact(contact.PersonID).subscribe(() => {
+        this.contactService.getContacts(this.serviceProvider.ServiceId).subscribe(
+          (data) => this.contacts = data,
+          (error) => this.errorMsg = error
+        )
+      })
+    }
   }
-
-  addContact() {
-    this.router.navigate(['addContact', this.serviceProvider.id]);
-  }
-
-  
-
-  
-    
-    
-
-    // this.empService.getEmployeesById(id).subscribe(
-    //   (data) => {
-    //     this.employee = data;
-    //   },
-    //   (error) => {
-    //     this.errorMsg = error;
-    //   },
-    //   () => console.log("Complete")
-    // )
-  
 }

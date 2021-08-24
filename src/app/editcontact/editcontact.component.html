@@ -1,1 +1,65 @@
-<p>editcontact works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12 col-xl-9 card flex-row mx-auto px-0">
+            <div class="card-body">
+                <h4 class="title text-center mt-4">
+                    Edit Contact
+                </h4>
+                <div>
+                    <form #addContact = "ngForm" (ngSubmit)="update(contact.PersonId, contact)" novalidate>
+                        <div class="form-input">
+                            <span><i class="fa fa-user" style="color: rgb(109, 35, 179);"></i></span>
+                            <input type="text" #fname = "ngModel" class="form-control" required name="fname" [(ngModel)] = "contact.FirstName"
+                            [class.is-invalid] = "fname.invalid && fname.touched" placeholder="First Name">
+                            <div *ngIf="fname.touched && fname.errors">
+                                <div class="alert alert-danger" *ngIf="fname.errors.required">First name is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-user" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #lname = "ngModel" class="form-control" required name="lname" [(ngModel)] = "contact.LastName"
+                            [class.is-invalid] = "lname.invalid && lname.touched" placeholder="Last Name">
+                            <div *ngIf="lname.touched && lname.errors">
+                                <div class="alert alert-danger" *ngIf="lname.errors.required">Last name is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-phone" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="number" #phone = "ngModel" class="form-control" required name="phone" [(ngModel)] = "contact.Phone"
+                            [class.is-invalid] = "phone.invalid && phone.touched" placeholder="Phone">
+                            <div *ngIf="phone.touched && phone.errors">
+                                <div class="alert alert-danger" *ngIf="phone.errors.required">Phone is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-phone" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="number" #officephone = "ngModel" class="form-control" required name="officephone" [(ngModel)] = "contact.OfficePhone"
+                            [class.is-invalid] = "officephone.invalid && officephone.touched" placeholder="Office Phone">
+                            <div *ngIf="officephone.touched && officephone.errors">
+                                <div class="alert alert-danger" *ngIf="officephone.errors.required">Office phone is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-envelope-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="email" #email = "ngModel" class="form-control" required name="email" [(ngModel)] = "contact.Email"
+                            [class.is-invalid] = "email.invalid && email.touched" placeholder="Email">
+                            <div *ngIf="email.touched && email.errors">
+                                <div class="alert alert-danger" *ngIf="email.errors.required">Email is required</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <button mat-raised-button color="primary" type="submit">Edit Contact</button>
+                            <button mat-raised-button color="accent" (click)="cancel()" class="ml-2">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

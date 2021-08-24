@@ -1,9 +1,9 @@
 export class Contact {
-    id: string = "";
-    firstName: string = "";
-    lastName: string = "";
-    phone: number = 0;
-    officePhone: number = 0;
-    email: string = "";
-    sid: string = "";
+    PersonID: number = 0;
+    FirstName: string = "";
+    LastName: string = "";
+    Phone: number | undefined;
+    OfficePhone: number | undefined;
+    Email: string = "";
+    SID: number = 0;
 }

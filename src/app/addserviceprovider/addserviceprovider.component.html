@@ -1,130 +1,175 @@
-<div class="container-fluid">
-    <br>
-    <h2>Add Service Provider</h2>
-    <form #addSPForm = "ngForm" (ngSubmit)="onSubmit(addSPForm)" novalidate>
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" #name = "ngModel" class="form-control" required name="name" [(ngModel)] = "spModel.name"
-            [class.is-invalid] = "name.invalid && name.touched">
-            <div *ngIf="name.touched && name.errors">
-                <div class="alert alert-danger" *ngIf="name.errors.required">Name is required</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12 col-xl-9 card flex-row mx-auto px-0">
+            <div class="card-body">
+                <h4 class="title text-center mt-4">
+                    Add Service Provider
+                </h4>
+                <div>
+                    <form #addSPForm = "ngForm" (ngSubmit)="onSubmit(addSPForm)" novalidate>
+                        <div class="form-input">
+                            <span><i class="fa fa-user" style="color: rgb(109, 35, 179);"></i></span>
+                            <input type="text" #name = "ngModel" class="form-control" required name="name" [(ngModel)] = "spModel.ServiceName"
+                            [class.is-invalid] = "name.invalid && name.touched" placeholder="Name">
+                            <div *ngIf="name.touched && name.errors">
+                                <div class="alert alert-danger" *ngIf="name.errors.required">Name is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-id-card-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #address1 = "ngModel" class="form-control" required name="address1" [(ngModel)] = "spModel.Address1"
+                            [class.is-invalid] = "address1.invalid && address1.touched" placeholder="Address 1">
+                            <div *ngIf="address1.touched && address1.errors">
+                                <div class="alert alert-danger" *ngIf="address1.errors.required">Address 1 is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-id-card-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #address2 = "ngModel" class="form-control" name="address2" [(ngModel)] = "spModel.Address2" placeholder="Address 2">
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-flag" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #country = "ngModel" class="form-control" required name="country" [(ngModel)] = "spModel.Country"
+                            [class.is-invalid] = "country.invalid && country.touched" placeholder="Country">
+                            <div *ngIf="country.touched && country.errors">
+                                <div class="alert alert-danger" *ngIf="country.errors.required">Country is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-map-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #state = "ngModel" class="form-control" required name="state" [(ngModel)] = "spModel.State"
+                            [class.is-invalid] = "state.invalid && state.touched" placeholder="State">
+                            <div *ngIf="state.touched && state.errors">
+                                <div class="alert alert-danger" *ngIf="state.errors.required">State is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-building" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #city = "ngModel" class="form-control" required name="city" [(ngModel)] = "spModel.City"
+                            [class.is-invalid] = "city.invalid && city.touched" placeholder="City">
+                            <div *ngIf="city.touched && city.errors">
+                                <div class="alert alert-danger" *ngIf="city.errors.required">City is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-flag" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #territory = "ngModel" class="form-control" name="territory" [(ngModel)] = "spModel.Territory" placeholder="Territory">
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-th" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="number" #zip = "ngModel" class="form-control" required name="zip" [(ngModel)] = "spModel.Zip"
+                            [class.is-invalid] = "zip.invalid && zip.touched" placeholder="Zip">
+                            <div *ngIf="zip.touched && zip.errors">
+                                <div class="alert alert-danger" *ngIf="zip.errors.required">Zip is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-fax" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="number" #fax = "ngModel" class="form-control" name="fax" [(ngModel)] = "spModel.Fax" placeholder="Fax">
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-phone" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="number" #phone = "ngModel" class="form-control" required name="phone" [(ngModel)] = "spModel.Phone"
+                            [class.is-invalid] = "phone.invalid && phone.touched" placeholder="Phone">
+                            <div *ngIf="phone.touched && phone.errors">
+                                <div class="alert alert-danger" *ngIf="phone.errors.required">Phone is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-envelope-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="email" #email = "ngModel" class="form-control" required name="email" [(ngModel)] = "spModel.Email"
+                            [class.is-invalid] = "email.invalid && email.touched" placeholder="Email">
+                            <div *ngIf="email.touched && email.errors">
+                                <div class="alert alert-danger" *ngIf="email.errors.required">Email is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="text" #timezone = "ngModel" class="form-control" required name="timezone" [(ngModel)] = "spModel.TimeZone"
+                            [class.is-invalid] = "timezone.invalid && timezone.touched" placeholder="Timezone">
+                            <div *ngIf="timezone.touched && timezone.errors">
+                                <div class="alert alert-danger" *ngIf="timezone.errors.required">Timezone is required</div>
+                            </div>
+                        </div>
+
+                        <label>Weekday Hours (Open)</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="time" #weekdayHoursStart = "ngModel" class="form-control" required name="weekdayHoursStart" [(ngModel)] = "spModel.WeekdayHoursStart"
+                            [class.is-invalid] = "weekdayHoursStart.invalid && weekdayHoursStart.touched">
+                            <div *ngIf="weekdayHoursStart.touched && weekdayHoursStart.errors">
+                                <div class="alert alert-danger" *ngIf="weekdayHoursStart.errors.required">Weekday Hours is required</div>
+                            </div>
+                        </div>
+
+                        <label>Weekday Hours (Close)</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="time" #weekdayHoursEnd = "ngModel" class="form-control" required name="weekdayHoursEnd" [(ngModel)] = "spModel.WeekdayHoursEnd"
+                            [class.is-invalid] = "weekdayHoursEnd.invalid && weekdayHoursEnd.touched">
+                            <div *ngIf="weekdayHoursEnd.touched && weekdayHoursEnd.errors">
+                                <div class="alert alert-danger" *ngIf="weekdayHoursEnd.errors.required">Weekday Hours is required</div>
+                            </div>
+                        </div>
+
+                        <label>Weekend Hours (Open)</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="time" #weekendHoursStart = "ngModel" class="form-control" required name="weekendHoursStart" [(ngModel)] = "spModel.WeekendHoursStart"
+                            [class.is-invalid] = "weekendHoursStart.invalid && weekendHoursStart.touched">
+                            <div *ngIf="weekendHoursStart.touched && weekendHoursStart.errors">
+                                <div class="alert alert-danger" *ngIf="weekendHoursStart.errors.required">Weekend Hours is required</div>
+                            </div>
+                        </div>
+
+                        <label>Weekend Hours (Close)</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="time" #weekendHoursEnd = "ngModel" class="form-control" required name="weekendHoursEnd" [(ngModel)] = "spModel.WeekendHoursEnd"
+                            [class.is-invalid] = "weekendHoursEnd.invalid && weekendHoursEnd.touched">
+                            <div *ngIf="weekendHoursEnd.touched && weekendHoursEnd.errors">
+                                <div class="alert alert-danger" *ngIf="weekendHoursEnd.errors.required">Weekend Hours is required</div>
+                            </div>
+                        </div>
+
+                        <label>Sunday Hours (Open)</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="time" #sundayHoursStart = "ngModel" class="form-control" required name="sundayHoursStart" [(ngModel)] = "spModel.SundayHoursStart"
+                            [class.is-invalid] = "sundayHoursStart.invalid && sundayHoursStart.touched">
+                            <div *ngIf="sundayHoursStart.touched && sundayHoursStart.errors">
+                                <div class="alert alert-danger" *ngIf="sundayHoursStart.errors.required">Sunday Hours is required</div>
+                            </div>
+                        </div>
+
+                        <label>Sunday Hours (Close)</label>
+                        <div class="form-input">
+                            <span><i class="fa fa-clock-o" style="color:rgb(109, 35, 179);"></i></span>
+                            <input type="time" #sundayHoursEnd = "ngModel" class="form-control" required name="sundayHoursEnd" [(ngModel)] = "spModel.SundayHoursEnd"
+                            [class.is-invalid] = "sundayHoursEnd.invalid && sundayHoursEnd.touched">
+                            <div *ngIf="sundayHoursEnd.touched && sundayHoursEnd.errors">
+                                <div class="alert alert-danger" *ngIf="sundayHoursEnd.errors.required">Sunday Hours is required</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <button mat-raised-button color="primary" type="submit">Add</button>
+                            <button mat-raised-button color="accent" (click)="cancel()" class="ml-2">Cancel</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label>Address 1</label>
-            <input type="text" #address1 = "ngModel" class="form-control" required name="address1" [(ngModel)] = "spModel.address1"
-            [class.is-invalid] = "address1.invalid && address1.touched">
-            <div *ngIf="address1.touched && address1.errors">
-                <div class="alert alert-danger" *ngIf="address1.errors.required">Address 1 is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Address 2</label>
-            <input type="text" #address2 = "ngModel" class="form-control" name="address2" [(ngModel)] = "spModel.address2">
-        </div>
-
-        <div class="form-group">
-            <label>Country</label>
-            <input type="text" #country = "ngModel" class="form-control" required name="country" [(ngModel)] = "spModel.country"
-            [class.is-invalid] = "country.invalid && country.touched">
-            <div *ngIf="country.touched && country.errors">
-                <div class="alert alert-danger" *ngIf="country.errors.required">Country is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>State</label>
-            <input type="text" #state = "ngModel" class="form-control" required name="state" [(ngModel)] = "spModel.state"
-            [class.is-invalid] = "state.invalid && state.touched">
-            <div *ngIf="state.touched && state.errors">
-                <div class="alert alert-danger" *ngIf="state.errors.required">State is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>City</label>
-            <input type="text" #city = "ngModel" class="form-control" required name="city" [(ngModel)] = "spModel.city"
-            [class.is-invalid] = "city.invalid && city.touched">
-            <div *ngIf="city.touched && city.errors">
-                <div class="alert alert-danger" *ngIf="city.errors.required">City is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Territory</label>
-            <input type="text" #territory = "ngModel" class="form-control" name="territory" [(ngModel)] = "spModel.territory">
-        </div>
-
-        <div class="form-group">
-            <label>Zip</label>
-            <input type="number" #zip = "ngModel" class="form-control" required name="zip" [(ngModel)] = "spModel.zip"
-            [class.is-invalid] = "zip.invalid && zip.touched">
-            <div *ngIf="zip.touched && zip.errors">
-                <div class="alert alert-danger" *ngIf="zip.errors.required">Zip is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Fax</label>
-            <input type="number" #fax = "ngModel" class="form-control" name="fax" [(ngModel)] = "spModel.fax">
-        </div>
-
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="number" #phone = "ngModel" class="form-control" required name="phone" [(ngModel)] = "spModel.phone"
-            [class.is-invalid] = "phone.invalid && phone.touched">
-            <div *ngIf="phone.touched && phone.errors">
-                <div class="alert alert-danger" *ngIf="phone.errors.required">Phone is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" #email = "ngModel" class="form-control" required name="email" [(ngModel)] = "spModel.email"
-            [class.is-invalid] = "email.invalid && email.touched">
-            <div *ngIf="email.touched && email.errors">
-                <div class="alert alert-danger" *ngIf="email.errors.required">Email is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Timezone</label>
-            <input type="text" #timezone = "ngModel" class="form-control" required name="timezone" [(ngModel)] = "spModel.timezone"
-            [class.is-invalid] = "timezone.invalid && timezone.touched">
-            <div *ngIf="timezone.touched && timezone.errors">
-                <div class="alert alert-danger" *ngIf="timezone.errors.required">Timezone is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Weekday Hours</label>
-            <input type="time" #weekdayHours = "ngModel" class="form-control" required name="weekdayHours" [(ngModel)] = "spModel.weekdayHours"
-            [class.is-invalid] = "weekdayHours.invalid && weekdayHours.touched">
-            <div *ngIf="weekdayHours.touched && weekdayHours.errors">
-                <div class="alert alert-danger" *ngIf="weekdayHours.errors.required">Weekday Hours is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Weekend Hours</label>
-            <input type="time" #weekendHours = "ngModel" class="form-control" required name="weekendHours" [(ngModel)] = "spModel.weekendHours"
-            [class.is-invalid] = "weekendHours.invalid && weekendHours.touched">
-            <div *ngIf="weekendHours.touched && weekendHours.errors">
-                <div class="alert alert-danger" *ngIf="weekendHours.errors.required">Weekend Hours is required</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>Sunday Hours</label>
-            <input type="time" #sundayHours = "ngModel" class="form-control" required name="sundayHours" [(ngModel)] = "spModel.sundayHours"
-            [class.is-invalid] = "sundayHours.invalid && sundayHours.touched">
-            <div *ngIf="sundayHours.touched && sundayHours.errors">
-                <div class="alert alert-danger" *ngIf="sundayHours.errors.required">Sunday Hours is required</div>
-            </div>
-        </div>
-        
-        <button mat-raised-button color="primary" type="submit" [disabled]="addSPForm.form.invalid">Submit Form</button>
-  
-    </form>    
+    </div>
 </div>

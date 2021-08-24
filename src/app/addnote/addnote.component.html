@@ -4,7 +4,7 @@
     <form #addNote = "ngForm" (ngSubmit)="onSubmit(addNote)" novalidate>
         <div class="form-group">
             <label>Title</label>
-            <input type="text" #title = "ngModel" class="form-control" required name="title" [(ngModel)] = "noteModel.title"
+            <input type="text" #title = "ngModel" class="form-control" required name="title" [(ngModel)] = "noteModel.Title"
             [class.is-invalid] = "title.invalid && title.touched">
             <div *ngIf="title.touched && title.errors">
                 <div class="alert alert-danger" *ngIf="title.errors.required">Title is required</div>
@@ -13,12 +13,13 @@
 
         <div class="form-group">
             <label>Content</label>
-            <input type="text" #content = "ngModel" class="form-control" required name="content" [(ngModel)] = "noteModel.text"
+            <input type="text" #content = "ngModel" class="form-control" required name="content" [(ngModel)] = "noteModel.Notes"
             [class.is-invalid] = "content.invalid && content.touched">
             <div *ngIf="content.touched && content.errors">
                 <div class="alert alert-danger" *ngIf="content.errors.required">Content is required</div>
             </div>
         </div>
         <button mat-raised-button color="primary" type="submit" [disabled]="addNote.form.invalid">Add Note</button>
+        <button mat-raised-button color="accent" (click)="cancel()" class="ml-2">Cancel</button>
     </form>    
 </div>

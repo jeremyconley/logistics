@@ -1,6 +1,6 @@
 export class Note {
-    id: string = "";
-    title: string = "";
-    text: string = "";
-    sid: string = "";
+    NoteId: number = 0;
+    Title: string = "";
+    Notes: string = "";
+    SID: number = 0;
 }

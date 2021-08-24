@@ -1,8 +1,8 @@
-import { EventEmitter, Output } from '@angular/core';
-import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpService } from '../services/sp.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ChangepasswordComponent } from '../changepassword/changepassword.component';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +14,29 @@ export class HomeComponent implements OnInit {
   public errorMsg: any;
   public spList: any;
 
-  constructor(private router: Router, private spService: SpService) { }
+  constructor(private router: Router, private spService: SpService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.spList = this.spService.getServiceProviders();
+    this.getData();
   }
+
+  ngAfterViewInit(): void {
+    console.log("Hellooooo")
+    this.getData();
+  }
+
+  getData(){
+    this.spService.getServiceProviders().subscribe(
+      (data) => {
+        this.spList = data;
+      },
+      (error) => {
+        this.errorMsg = error;
+      },
+      () => console.log("Complete")
+    )
+  }
+
 
   onSelect(id: number) {
     this.router.navigate(['serviceproviderdetails', id]);
@@ -39,5 +57,13 @@ export class HomeComponent implements OnInit {
     //     (error) => this.errorMsg = error
     //   )
     // })
+  }
+
+  changePassword(){
+    const dialogRef = this.dialog.open(ChangepasswordComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

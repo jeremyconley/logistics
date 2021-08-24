@@ -6,17 +6,22 @@ import { of } from 'rxjs';
 })
 export class AuthService {
 
+  public password = "admin";
+  private admin = "admin";
+
   private isLoggedIn: boolean;
   private userName: string | undefined;
-
 
   constructor() { 
     this.isLoggedIn = false;
   }
 
   login(username: string, password:string) {
-    this.isLoggedIn = true;
-    this.userName = username;
+    
+    if (username == this.admin && password == this.password) {
+      this.isLoggedIn = true;
+      this.userName = username;
+    }
     return of(this.isLoggedIn);
   }
 
@@ -34,6 +39,15 @@ export class AuthService {
 
   logoutUser(): void {
     this.isLoggedIn = false;
+  }
+
+  changePassword(newPass: string, oldPass: string) : boolean{
+    if (oldPass == this.password) {
+      this.password = newPass;
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

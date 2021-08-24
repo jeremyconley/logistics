@@ -19,6 +19,7 @@ import { AddcontactComponent } from './addcontact/addcontact.component';
 import { EditserviceproviderComponent } from './editserviceprovider/editserviceprovider.component';
 import { EditnoteComponent } from './editnote/editnote.component';
 import { EditcontactComponent } from './editcontact/editcontact.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EditcontactComponent } from './editcontact/editcontact.component';
     AddcontactComponent,
     EditserviceproviderComponent,
     EditnoteComponent,
-    EditcontactComponent
+    EditcontactComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,

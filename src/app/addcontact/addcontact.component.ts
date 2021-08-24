@@ -11,34 +11,38 @@ import { ContactService } from '../services/contact.service';
 export class AddcontactComponent implements OnInit {
 
   public contactModel = new Contact();
-  public sid: any;
   contacts: any;
   errorMsg: any;
-
+  serviceId: any;
+  
   constructor(private contactService: ContactService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = params.get('id');
       if (id != null) {
-        this.sid = id;
+        this.serviceId = id;
       }
     });
   }
 
-  onSubmit(spForm: any){
-    this.contactModel.id = this.contactService.getContacts().length.toString();
-    this.contactModel.sid = this.sid;
-    this.contactService.addContact(this.contactModel)
-    // this.empService.postEmployee(this.empModel).subscribe(
-    //   (data) => {this.employees = data;
-    //     this.empService.getEmployees().subscribe(
-    //       (data) => this.employees = data, //Get Updataed list after inserting
-    //       (error) => this.errorMsg = error
-    //     )
-    //   }
-    // )
-    this.router.navigate(['/home']);
+  onSubmit(noteForm: any){
+    this.contactModel.SID = this.serviceId;
+    // this.noteModel.NoteId = // Between any two numbers
+    // Math.floor(Math.random() * (100000 - 0 + 1)) + 0;
+    this.contactService.postContact(this.contactModel).subscribe(
+      (data) => {this.contacts = data;
+        this.contactService.getAllContacts().subscribe(
+          (data) => this.contacts = data, //Get Updataed list after inserting
+          (error) => this.errorMsg = error
+        )
+      }
+    )
+    this.router.navigate(['serviceproviderdetails', this.serviceId]);
+  }
+
+  cancel(){
+    this.router.navigate(['serviceproviderdetails', this.serviceId]);
   }
 
 }
